@@ -1,0 +1,23 @@
+.event-form{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  form{
+    display: flex;
+    flex-direction: column;
+    gap:4%;
+    border: 1px solid black;
+    width: fit-content;
+    padding: 15px;
+    border-radius: 15px;
+
+    label{
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
+
+}

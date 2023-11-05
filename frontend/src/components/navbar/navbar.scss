@@ -1,0 +1,51 @@
+.top-navbar {
+  background-color: #333; // Background color for the navigation bar
+  color: #fff; // Text color
+  padding: 20px 20px; // Adjust padding as needed
+  display: flex;
+  justify-content: space-between; // Align items to the left and right
+
+  .nav-list {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+
+    li {
+      margin: 0 20px; // Adjust spacing between items
+      a {
+        text-decoration: none;
+        color: #fff;
+        font-weight: 600;
+        font-size: 18px; // Increase the font size
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+
+    .home {
+      order: 2;
+    }
+
+    .events {
+      order: 3;
+    }
+
+    .about-us {
+      order: 4;
+    }
+
+    .account {
+      order: 5;
+    }
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    font-weight: 600;
+    font-size: 18px; // Adjust font size as needed
+  }
+}
