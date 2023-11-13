@@ -8,6 +8,8 @@ import ImgMediaCard from "../../components/eventcard/ImgCard.jsx";
 import MultiActionAreaCard from "../../components/eventcard/ImgCancel.jsx";
 import Button from "@mui/material/Button";
 import EventForm from "../../components/eventcard/EventForm.jsx"; // Import the EventForm component
+import DashHero from "../../components/hero/DashHero";
+
 
 export default function AlumniDashboard() {
     const [events, setEvents] = useState([]);
@@ -28,12 +30,7 @@ export default function AlumniDashboard() {
 
     return (
         <div className="alumni-dash">
-            <div className="nav">
-                <Navbar />
-            </div>
-            <div className="welcome-text">
-                <h1>Welcome Back, David!</h1>
-            </div>
+            <DashHero/>
 
             <div className="my-events">
                 <h2>My Events</h2>

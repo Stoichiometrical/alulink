@@ -1,0 +1,125 @@
+.hero-container{
+    overflow: hidden;
+   position: relative;
+
+
+
+
+.pic-sect{
+
+   .pic-img{
+        object-fit: cover;
+        width: 99vw;
+        height: 100vh;
+        position: relative;
+    }
+
+    .pic-events{
+        height: 80vh;
+      
+    }
+
+    .pic-about{
+        height: 65vh;
+      
+
+    }
+
+    .pic-dash{
+        height: 50vh;
+    }
+
+   
+    .search{
+            
+           
+        margin-top: 20%;
+        left:-37%;
+        position: absolute;
+
+        input{
+            background-color: #FFA500;
+            color:white;
+            cursor: pointer;
+            padding: 10px;
+            border-radius: 5%;
+            padding: 15px;
+            border: none;
+            width: 50vw;
+           
+
+            &::placeholder {
+                text-align: center;
+              }
+
+            
+        }
+        
+       }
+
+
+    .text{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -70%);
+        text-align: center;
+        
+
+        .first-text{
+            background-color: rgba(211, 211, 211, 0.336);
+            padding:10%;
+            border-radius: 15px;
+            width: fit-content;
+            
+            h1{
+                color:#FFD700;
+                font-size: 5em;
+                margin: 0;
+            }
+
+            .events-header{
+                font-size:4rem;
+            }
+
+            .about-header{
+                font-size:5rem;
+                white-space: nowrap;
+            }
+
+         .ft-small{
+            color:white;
+            font-weight: bold;
+            margin-top: 1%;
+            white-space: nowrap;
+           
+         }
+
+        }
+
+        .option-tag{
+            background-color: #FFA500;
+            color:white;
+            cursor: pointer;
+            padding: 10px;
+            margin-top: 30%;
+            left:21%;
+            position: absolute
+        }
+
+
+        
+    }
+
+    .dash-text{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+    }
+   ;
+
+}
+
+}

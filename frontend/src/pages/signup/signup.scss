@@ -1,0 +1,68 @@
+.sign-container {
+  display: flex;
+  flex-direction: row wrap;
+  max-width: 100%;
+  box-sizing: border-box;
+
+  .left-side {
+    flex: 1.7;
+
+    img {
+      object-fit: cover;
+      width: 100%;
+      height: 100vh;
+    }
+  }
+
+  .right-side {
+    flex: 1;
+    margin-left: 10%;
+
+    h1 {
+      color: #008080;
+    }
+
+    .sign-h {
+      margin-top: 15%;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      input {
+        padding: 14px;
+        border-radius: 10px;
+        margin: 2%;
+        color: white;
+        outline-color: #008080;
+        border: none;
+        background-color: #dcbf28;
+        min-width: 80%;
+
+        &::placeholder {
+          text-align: center;
+        }
+      }
+
+      button {
+        background-color: #ffd700;
+        color: white;
+        min-width: 50%;
+      }
+    }
+
+    .alternative {
+      margin-top: 2%;
+      .link {
+        cursor: pointer;
+        color: #008080;
+        text-decoration: underline;
+        font-weight: bold;
+      }
+    }
+  }
+
+}

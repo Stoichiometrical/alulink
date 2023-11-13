@@ -1,7 +1,14 @@
 .top-navbar {
-  background-color: #333; // Background color for the navigation bar
+  background-color: #aaaaaa85; 
   color: #fff; // Text color
-  padding: 20px 20px; // Adjust padding as needed
+  padding: 30px 20px;
+  padding-bottom: 20px;
+  padding-top: 38px;
+  position:absolute;
+  top: -5%; 
+  margin-right: 0;
+  width: 100%;
+  z-index: 1;
   display: flex;
   justify-content: space-between; // Align items to the left and right
 
@@ -10,10 +17,11 @@
     display: flex;
     margin: 0;
     padding: 0;
+    padding-right: 4%;
 
     li {
       margin: 0 20px; // Adjust spacing between items
-      a {
+      .a {
         text-decoration: none;
         color: #fff;
         font-weight: 600;
@@ -24,6 +32,8 @@
         }
       }
     }
+
+  
 
     .home {
       order: 2;
@@ -44,8 +54,9 @@
 
   .logo {
     display: flex;
+    color: #FFD700;
     align-items: center;
-    font-weight: 600;
+    font-weight: 800;
     font-size: 18px; // Adjust font size as needed
   }
 }
