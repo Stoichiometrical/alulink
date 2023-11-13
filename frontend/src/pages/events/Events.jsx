@@ -3,6 +3,7 @@ import EventsHero from '../../components/hero/EventsHero'
 import AvailableEventCard from "../../components/eventcard/AvailableEventCard"
 import AlumniRecordCard from "../../components/eventcard/AlumniRecordCard"
 import EditableEventCard from "../../components/eventcard/EditableEvent"
+import DashFrame from "../../components/dashframe/DashboardFrame"
 
 export default function Events(){
     return(
@@ -14,6 +15,11 @@ export default function Events(){
             <AvailableEventCard/>
             <AlumniRecordCard/>
             <EditableEventCard/>
+        </div>
+
+        <div>
+
+            <DashFrame/>
         </div>
 
         </>

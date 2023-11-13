@@ -1,0 +1,54 @@
+
+.dash{
+    display: flex;
+    height: 100vh;
+    width: 100%;
+
+
+    .dash-sidebar{
+        flex:2;
+    }
+
+    .dash-main{
+        flex:6;
+        background-color: green;
+    }
+}
+
+
+
+
+
+.sidebar {
+    background-color: #DCBF28;
+    height: 100vh;
+    
+    h1{
+        margin-top: 0;
+        color: white;
+        padding-top: 20%;
+    }
+  
+    .options-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      padding-top: 8%;
+  
+      li {
+        a {
+          text-decoration: none;
+          color: white;
+          display: block;
+          padding: 10px;
+          transition: color 0.3s, background-color 0.3s;
+  
+          &:hover {
+            color:#008080;
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+  }
+  
