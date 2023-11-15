@@ -8,11 +8,21 @@ import SignUp from "./pages/signup/SignUp.jsx";
 import HomeHero from "./components/hero/HomeHero.jsx";
 import Events from "./pages/events/Events.jsx";
 import About from "./pages/about/About.jsx";
+import Home from "./pages/home/Home.jsx";
+import AlumniDash from "./pages/dashboard/AlumniDash.jsx";
+import ByMe from "./pages/dashboard/alumni/ByMe.jsx";
+import Attending from "./pages/dashboard/alumni/Attending.jsx";
+import Collaborating from "./pages/dashboard/alumni/Collaborating.jsx";
+import AlumniEvents from './pages/dashboard/admin/AlumniEvents.jsx'
+import Records from "./pages/dashboard/admin/Records.jsx";
+import Usage from './pages/dashboard/admin/Usage.jsx'
+import AdminDash from "./pages/dashboard/AdminDash.jsx";
+
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <HomeHero/>,
+    element: <Home/>,
   },
   {
     path: "/events",
@@ -31,13 +41,42 @@ const router = createBrowserRouter([
     element: <About/>,
   },
   {
-    path: "/userdash",
+    path: "/userdashs",
     element: <App />,
   },
   {
-    path: "/admindash",
-    element: "",
+     path:'/userdash',
+     element:<AlumniDash/>,
+    
   },
+  {
+    path:'byme',
+    element:<ByMe/>,
+  },
+  {
+    path:'attending',
+    element:<Attending/>,
+  },
+  {
+    path:'collaborating',
+    element:<Collaborating/>,
+  },
+  {
+    path: "/admindash",
+    element: <AdminDash/>,
+  },
+  {
+    path:'/alumnievents',
+    element:<AlumniEvents/>
+  },
+  {
+    path:'/records',
+    element:<Records/>
+  },
+  {
+    path:'/usage',
+    element:<Usage/>
+  }
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(

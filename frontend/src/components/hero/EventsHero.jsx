@@ -1,6 +1,7 @@
 import './hero.scss'
 import Navbar from '../navbar/Navbar'
 import im from '../../assets/home.jpg'
+import SearchBar from '../searchbar/Searchbar'
 
 export default function EventsHero(){
     return(
@@ -15,7 +16,8 @@ export default function EventsHero(){
 
             </div>
             <div className='search'>
-               <input type='text' placeholder='Search Events'/>
+               {/* <input type='text' placeholder='Search Events'/> */}
+               <SearchBar placeholder='Search Events'/>
             </div>
 
             

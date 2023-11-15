@@ -1,0 +1,24 @@
+.events{
+
+    .event-labels{
+        display: flex;
+        list-style: none;
+        justify-content: space-around;
+        align-items: center;
+   
+        li{
+            color:#008080;
+            font-weight: bold;
+            cursor: pointer;
+
+            &:hover{
+                text-decoration: underline;
+            }
+        }
+    }
+
+    .event-cards{
+        display: flex;
+        flex-direction: column;
+    }
+}

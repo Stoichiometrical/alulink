@@ -1,6 +1,6 @@
 import './card.scss'
 
-export default function AvailableEventCard(){
+export default function AvailableEventCard({availability='RSVP'}){
     return(
         <div className='event-card'>
             <div className='img-sect'>
@@ -15,7 +15,7 @@ export default function AvailableEventCard(){
                  <div className='event-time'>10:00 AM - 12:00 PM</div>
                  <div className='event-location'>Grand Baie ,Public Hall</div>
                  <div className='btn-sect'>
-                     <button className='btn'>RSVP</button>
+                     <button className='btn'>{availability}</button>
                  </div>
             </div>
         

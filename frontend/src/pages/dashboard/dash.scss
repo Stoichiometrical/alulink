@@ -66,3 +66,41 @@ h2{
   align-items: center;
 
 }
+
+.dashboard{
+  display: flex;
+  flex-direction: column;
+}
+
+.filters{
+  list-style: none;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  li{
+    font-weight: 600;
+    cursor: pointer;
+    font-weight: bold;
+
+    &:hover{
+      text-decoration: underline;
+    }
+
+
+  }
+
+  li:nth-child(1){
+
+    &:hover{
+      text-decoration: none;
+    }
+  }
+}
+
+.record{
+  width:60%;
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-top: 2%;
+}

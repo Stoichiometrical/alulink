@@ -1,0 +1,28 @@
+.search-bar {
+    position: relative;
+    
+    // width: 300px; // Adjust the width as needed
+  }
+  
+  input {
+    width: 100%;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #DCBF28;
+  }
+  
+  .search-icon {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    color: #555;
+    cursor: pointer;
+    transition: color 0.3s;
+  
+    &:hover {
+      color: #007bff; // Change to your preferred hover color
+    }
+  }
+  

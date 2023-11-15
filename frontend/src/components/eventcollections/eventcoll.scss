@@ -1,0 +1,29 @@
+.e-collections{
+    margin-top: 2%;
+    margin-bottom: 1%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+h3{
+  margin:0;
+  padding:0;
+}
+
+.e-cards{
+    display: flex;
+    flex-flow:row wrap;
+    margin-top:1.5%;
+}
+
+.view{
+  color:white;
+  padding: 10px 5%;
+  background-color: #DCBF28;
+  cursor: pointer;
+  width: fit-content;
+  font-weight: 500;
+}
+
+}
