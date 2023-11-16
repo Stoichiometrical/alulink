@@ -1,6 +1,7 @@
 import './hero.scss'
 import Navbar from '../navbar/Navbar'
 import im from '../../assets/home.jpg'
+import { Link as ScrollLink } from 'react-scroll';
 
 export default function HomeHero(){
     return(
@@ -15,9 +16,16 @@ export default function HomeHero(){
 
             </div>
 
-            <div className='option-tag'>
-                Lets Connect In Our Next Event
-            </div>
+            <ScrollLink to='e-cards' smooth={true} duration={500} className='option-tag'>
+              Let's Connect In Our Next Event
+            </ScrollLink>
+            
+
+
+               
+   
+
+
          </div>
 
         </div>

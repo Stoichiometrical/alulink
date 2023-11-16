@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import './signup.scss';
-import { Link } from "react-router-dom";
+import { Link, useNavigate} from 'react-router-dom';
 
-export default function SignUp() {
+const SignUp = () => {
+  const history = useNavigate();
+
   const [formData, setFormData] = useState({
     fullName: '',
     email: '',
@@ -22,8 +23,9 @@ export default function SignUp() {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+
     // Validate the form fields
     const validationErrors = {};
     if (!formData.fullName.trim()) {
@@ -50,9 +52,28 @@ export default function SignUp() {
     }
 
     if (Object.keys(validationErrors).length === 0) {
-      // Form is valid, you can proceed with submission
-      // For now, just log the data to the console
-      console.log('Form data:', formData);
+      try {
+        // Assuming you have an API endpoint for user registration
+        const response = await fetch('http://localhost:3000/auth/register', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(formData),
+        });
+
+        if (response.ok) {
+          // Registration successful, redirect to the home page
+          history('/login');
+        } else {
+          // Handle registration error
+          const errorData = await response.json();
+          setErrors({ registration: errorData.message });
+        }
+      } catch (error) {
+        console.error('Registration failed:', error);
+        setErrors({ registration: 'An error occurred during registration.' });
+      }
     } else {
       // Set validation errors to display to the user
       setErrors(validationErrors);
@@ -61,7 +82,7 @@ export default function SignUp() {
 
   return (
     <div className='sign-container'>
-      <div className='left-side'>
+    <div className='left-side'>
         <img
           src='https://images.pexels.com/photos/6476780/pexels-photo-6476780.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
           alt='Missing'
@@ -78,6 +99,7 @@ export default function SignUp() {
             onChange={handleChange}
           />
           {errors.fullName && <p className='error'>{errors.fullName}</p>}
+
           <input
             type='text'
             placeholder='Email'
@@ -86,6 +108,7 @@ export default function SignUp() {
             onChange={handleChange}
           />
           {errors.email && <p className='error'>{errors.email}</p>}
+
           <input
             type='text'
             placeholder='Graduation Year'
@@ -96,6 +119,7 @@ export default function SignUp() {
           {errors.graduationYear && (
             <p className='error'>{errors.graduationYear}</p>
           )}
+
           <input
             type='text'
             placeholder='Degree Program'
@@ -106,6 +130,7 @@ export default function SignUp() {
           {errors.degreeProgram && (
             <p className='error'>{errors.degreeProgram}</p>
           )}
+
           <input
             type='password'
             placeholder='Password'
@@ -114,6 +139,7 @@ export default function SignUp() {
             onChange={handleChange}
           />
           {errors.password && <p className='error'>{errors.password}</p>}
+
           <input
             type='password'
             placeholder='Confirm Password'
@@ -124,12 +150,20 @@ export default function SignUp() {
           {errors.confirmPassword && (
             <p className='error'>{errors.confirmPassword}</p>
           )}
+
           <button type='submit'>Sign Up</button>
         </form>
+        {errors.registration && (
+          <p className='error'>{errors.registration}</p>
+        )}
         <div className='alternative'>
-        <Link to='/login' className='link' >Already have an account?Sign in </Link>
+          <Link to='/login' className='link'>
+            Already have an account? Sign in
+          </Link>
         </div>
       </div>
     </div>
   );
-}
+};
+
+export default SignUp;

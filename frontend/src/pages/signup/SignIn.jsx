@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
-import './signup.scss';
-import { Link } from 'react-router-dom';
+import './signup.scss'
+import { Link,  useNavigate } from 'react-router-dom';
 
-export default function SignIn() {
+const SignIn = () => {
+  const history = useNavigate();
+
   const [formData, setFormData] = useState({
     email: '',
     password: '',
@@ -18,8 +20,9 @@ export default function SignIn() {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+
     // Validate the form fields
     const validationErrors = {};
     if (!formData.email.trim()) {
@@ -32,9 +35,28 @@ export default function SignIn() {
     }
 
     if (Object.keys(validationErrors).length === 0) {
-      // Form is valid, you can proceed with submission
-      // For now, just log the data to the console
-      console.log('Form data:', formData);
+      try {
+        // Assuming you have an API endpoint for user authentication
+        const response = await fetch('http://localhost:3000/auth/login', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(formData),
+        });
+
+        if (response.ok) {
+          // Sign-in successful, redirect to the home page
+          history('/');
+        } else {
+          // Handle sign-in error
+          const errorData = await response.json();
+          setErrors({ signIn: errorData.message });
+        }
+      } catch (error) {
+        console.error('Sign-in failed:', error);
+        setErrors({ signIn: 'An error occurred during sign-in.' });
+      }
     } else {
       // Set validation errors to display to the user
       setErrors(validationErrors);
@@ -78,4 +100,6 @@ export default function SignIn() {
       </div>
     </div>
   );
-}
+};
+
+export default SignIn;

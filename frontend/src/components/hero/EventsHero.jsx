@@ -17,7 +17,7 @@ export default function EventsHero(){
             </div>
             <div className='search'>
                {/* <input type='text' placeholder='Search Events'/> */}
-               <SearchBar placeholder='Search Events'/>
+               <SearchBar placeholder='Search Events'  serverRoute='events/title/' />
             </div>
 
             

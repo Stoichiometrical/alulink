@@ -1,28 +1,7 @@
-import User from "../models/User.js";
+import User from "../models/Alumni.js";
 import bcrypt from "bcryptjs";
 import { createError } from "../utils/error.js";
 import jwt from "jsonwebtoken";
-
-// Register user
-// export const register = async (req, res, next) => {
-//     try {
-//         const salt = bcrypt.genSaltSync(10);
-//         const hash = bcrypt.hashSync(req.body.password, salt);
-
-//         const newUser = new User({
-//             fullName: req.body.fullName,
-//             email: req.body.email,
-//             password: hash,
-//             accountType: req.body.accountType,
-//         });
-
-//         await newUser.save();
-//         // res.status(201).send("Successfully saved user");
-//         console.log(newUser)
-//     } catch (e) {
-//         next(e);
-//     }
-// };
 
 // Register user
 export const register = async (req, res, next) => {
@@ -31,10 +10,12 @@ export const register = async (req, res, next) => {
         const hash = bcrypt.hashSync(req.body.password, salt);
 
         const newUser = new User({
-            fullName: req.body.fullName,
+            fullName:req.body.fullName,
             email: req.body.email,
             password: hash,
-            accountType: req.body.accountType,
+            graduationYear: req.body.graduationYear,
+            degreeProgram: req.body.degreeProgram,
+    
         });
 
         await newUser.save();
@@ -43,8 +24,6 @@ export const register = async (req, res, next) => {
         next(e);
     }
 };
-
-
 
 // Get User
 export const getUser = async (req, res, next) => {
@@ -55,17 +34,20 @@ export const getUser = async (req, res, next) => {
         next(e);
     }
 };
-
-//Login
+ const JWT_SECRET='ALUALUMNI'
+// Login
 export const login = async (req, res, next) => {
+    
     try {
         const user = await User.findOne({ email: req.body.email });
         if (!user) return next(createError(404, "User not found"));
+        
 
         const isPasswordCorrect = await bcrypt.compare(
             req.body.password,
             user.password
         );
+        
         if (!isPasswordCorrect) return next(createError(400, "Wrong password"));
 
         const token = jwt.sign(

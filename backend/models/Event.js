@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
 const eventSchema = new mongoose.Schema({
     title: {
@@ -21,8 +21,15 @@ const eventSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Alumni',
     },
+    imageUrl:{
+        type: String,
+        default:'https://images.pexels.com/photos/2774556/pexels-photo-2774556.jpeg?auto=compress&cs=tinysrgb&w=600'
+    },
+    location:{
+        type: String
+    }
 });
 
 const Event = mongoose.model('Event', eventSchema);
 
-module.exports = Event;
+export default Event;

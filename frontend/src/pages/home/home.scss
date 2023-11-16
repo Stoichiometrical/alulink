@@ -11,9 +11,11 @@ h2{
 
 .e-cards{
     display: flex;
+    gap:15px;
     justify-content: center;
     align-items: center;
-    flex-wrap: row wrap;
+    flex-flow: row wrap;
+  
 
 }
 
@@ -22,6 +24,7 @@ h2{
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    text-decoration: none;
     margin-top: 2%;
     margin-bottom: 2%;
     padding:15px;

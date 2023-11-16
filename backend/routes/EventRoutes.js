@@ -1,6 +1,6 @@
-const express = require('express');
+import express from 'express';
 const router = express.Router();
-const eventController = require('../controllers/EventController');
+import * as eventController from '../controllers/EventController.js';
 
 // Create a new event
 router.post('/add', eventController.createEvent);
@@ -16,4 +16,23 @@ router.put('/:id', eventController.updateEvent);
 // Delete an event by ID
 router.delete('/:id', eventController.deleteEvent);
 
-module.exports = router;
+
+//Get latest events
+router.get('/latest', eventController.getLatestEvents);
+
+// Get events by category
+router.get('/events/category/:category', eventController.getEventsByCategory);
+
+// Get events by user ID
+router.get('/events/user/:userId', eventController.getEventsByUserId);
+
+// Get the first 4 events
+router.get('/events/firstfour', eventController.getFirstFourEvents);
+
+// Get events by date range
+router.get('/events/date/:startDate/:endDate', eventController.getEventsByDate);
+
+// Get event by title
+router.get('/events/title/:title', eventController.getEventByTitle);
+
+export default router;

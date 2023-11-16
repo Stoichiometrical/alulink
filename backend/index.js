@@ -1,15 +1,18 @@
-const express = require('express');
-const mongoose = require('mongoose');
-const bodyParser = require('body-parser');
-const cors = require('cors');
-const eventRoutes = require("./routes/EventRoutes")
-const alumniRoutes = require("./routes/AlumniRoutes")
+import express from 'express';
+import mongoose from 'mongoose';
+import bodyParser from 'body-parser';
+import cors from 'cors';
+import eventRoutes  from "./routes/EventRoutes.js"
+import alumniRoutes from "./routes/AlumniRoutes.js";
+import authRoutes from './routes/auth.js';
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+import 'dotenv/config';
+
 // MongoDB URI
-const uri = "mongodb+srv://davidtgondo:12345@cluster0.rjvgpf1.mongodb.net/?retryWrites=true&w=majority";
+const uri = "mongodb+srv://dgondo:12345@cluster0.besvb5m.mongodb.net/?retryWrites=true&w=majority";
 
 // Async function to set up the database connection
 async function connectToDatabase() {
@@ -44,6 +47,7 @@ app.use(bodyParser.json());
 
 app.use('/event',eventRoutes)
 app.use('/alumni',alumniRoutes)
+app.use('/auth',authRoutes)
 
 // Start the server
 async function startServer() {

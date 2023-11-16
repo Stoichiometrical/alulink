@@ -28,6 +28,7 @@
   border-radius: 10px;
   max-width: 350px;
   min-width: 300px;
+  max-height: 400px;
   background-color: #DCBF28;
 
   flex-direction: column;
@@ -90,7 +91,7 @@ color: white;
   .img-title{
     background-color: rgba(211, 211, 211, 0.37);
     padding: 15px;
-    white-space: nowrap;
+    // white-space: nowrap;
     position: absolute;
     color:white;
     top: 50%;
