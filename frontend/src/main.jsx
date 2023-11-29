@@ -17,6 +17,8 @@ import AlumniEvents from './pages/dashboard/admin/AlumniEvents.jsx'
 import Records from "./pages/dashboard/admin/Records.jsx";
 import Usage from './pages/dashboard/admin/Usage.jsx'
 import AdminDash from "./pages/dashboard/AdminDash.jsx";
+import { AuthProvider, useAuth } from '/src/utils/AuthContext.jsx';
+
 
 
 const router = createBrowserRouter([
@@ -46,7 +48,7 @@ const router = createBrowserRouter([
   },
   {
      path:'/userdash',
-     element:<AlumniDash/>,
+     element:<Attending/>,
     
   },
   {
@@ -63,7 +65,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/admindash",
-    element: <AdminDash/>,
+    element: <AlumniEvents/>,
   },
   {
     path:'/alumnievents',
@@ -81,6 +83,9 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
+    <AuthProvider>
     <RouterProvider router={router} />
+    </AuthProvider>
+    
   </React.StrictMode>
 );

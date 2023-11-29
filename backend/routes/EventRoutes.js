@@ -29,10 +29,26 @@ router.get('/events/user/:userId', eventController.getEventsByUserId);
 // Get the first 4 events
 router.get('/events/firstfour', eventController.getFirstFourEvents);
 
+// Get the 4 latest events by category
+router.get('/events/latest/:category', eventController.getLatestEventsByCategory); 
+
 // Get events by date range
 router.get('/events/date/:startDate/:endDate', eventController.getEventsByDate);
 
 // Get event by title
 router.get('/events/title/:title', eventController.getEventByTitle);
+
+// Route to join an event (RSVP)
+router.post('/join/:eventId', eventController.joinEvent);
+
+// Route to leave an event (Cancel RSVP)
+router.post('/leave/:eventId', eventController.leaveEvent);
+
+
+//Route to get events registered
+router.get("/events/registered/:alumniId", eventController.getRegisteredEvents);
+
+//Route to get events organized
+router.get("/events/organized/:alumniId", eventController.getOrganizedEvents);
 
 export default router;

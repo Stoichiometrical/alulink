@@ -28,7 +28,7 @@
   border-radius: 10px;
   max-width: 350px;
   min-width: 300px;
-  max-height: 400px;
+  // max-height: 400px;
   background-color: #DCBF28;
 
   flex-direction: column;
@@ -70,6 +70,18 @@ color:white;
 
 .event-dets{
 color: white;
+
+input {
+  max-width: 300px;
+}
+
+select{
+  width:200px;
+  padding: 5px;
+}
+
+
+
 }
 
 

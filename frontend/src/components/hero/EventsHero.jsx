@@ -3,7 +3,7 @@ import Navbar from '../navbar/Navbar'
 import im from '../../assets/home.jpg'
 import SearchBar from '../searchbar/Searchbar'
 
-export default function EventsHero(){
+export default function EventsHero({onSearch}){
     return(
         <div className='hero-container'>
         <Navbar/>
@@ -17,7 +17,7 @@ export default function EventsHero(){
             </div>
             <div className='search'>
                {/* <input type='text' placeholder='Search Events'/> */}
-               <SearchBar placeholder='Search Events'  serverRoute='events/title/' />
+               <SearchBar placeholder='Search Events'  serverRoute='event/events/title' onSearch={onSearch} />
             </div>
 
             

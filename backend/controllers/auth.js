@@ -15,6 +15,7 @@ export const register = async (req, res, next) => {
             password: hash,
             graduationYear: req.body.graduationYear,
             degreeProgram: req.body.degreeProgram,
+            role: req.body.role
     
         });
 

@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import './signup.scss'
-import { Link,  useNavigate } from 'react-router-dom';
+import './signup.scss';
+import { Link, useNavigate } from 'react-router-dom';
+import { useAuth } from '../../utils/AuthContext.jsx';
 
 const SignIn = () => {
-  const history = useNavigate();
-
+  const auth = useAuth();
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     email: '',
     password: '',
@@ -46,8 +47,10 @@ const SignIn = () => {
         });
 
         if (response.ok) {
-          // Sign-in successful, redirect to the home page
-          history('/');
+          // Sign-in successful, save data and redirect to the home page
+          const userData = await response.json();
+          auth.login(userData);
+          navigate('/');
         } else {
           // Handle sign-in error
           const errorData = await response.json();
@@ -66,7 +69,7 @@ const SignIn = () => {
   return (
     <div className='sign-container'>
       <div className='left-side'>
-        <img
+      <img
           src='https://images.pexels.com/photos/6476782/pexels-photo-6476782.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
           alt='Missing'
         />

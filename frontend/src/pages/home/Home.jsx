@@ -4,10 +4,16 @@ import AvailableEventCard from '../../components/eventcard/AvailableEventCard';
 import './home.scss';
 import { Link } from 'react-router-dom';
 import Footer from '../../components/footer/Footer';
+import { useAuth } from '../../utils/AuthContext';
 
 export default function Home() {
   const [latestEvents, setLatestEvents] = useState([]);
   const [loading, setLoading] = useState(true);
+  {console.log(latestEvents)}
+
+  const { userData} = useAuth();
+
+  
 
   useEffect(() => {
     // Fetch the latest events when the component mounts
@@ -38,16 +44,20 @@ export default function Home() {
         ) : (
           // Display event cards once data is loaded
           <div className='e-cards' id='e-cards'>
+            
             {latestEvents.map(event => (
               <AvailableEventCard
                 key={event._id}
+                eventId={event._id}
                 img={event.imageUrl}
                 title={event.title}
                 desc={event.description}
                 date={event.date}
                 location={event.location}
               />
-            ))}
+            ))
+             
+            }
           </div>
         )}
         <Link to='/events' className='view-more'>
@@ -63,10 +73,12 @@ export default function Home() {
             alt='Mising'
           />
           <div className='as-text'>
+       
             ALULINK is a platform that connects students and faculty in the ALU community. It is designed to bring together students from all corners of the world. At ALULINK, we understand the power of the ALU community. This platform is your gateway to reconnect with classmates, engage in enriching collaborations, and participate in exciting alumni-led events. Whether you're seeking professional opportunities, planning reunions, or simply want to stay connected with the spirit of ALU, ALULINK is your go-to destination.
           </div>
         </div>
       </div>
+    
       <Footer />
     </>
   );

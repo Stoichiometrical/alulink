@@ -21,11 +21,15 @@ const eventSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Alumni',
     },
-    imageUrl:{
+    participants: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Alumni', 
+    }],
+    imageUrl: {
         type: String,
-        default:'https://images.pexels.com/photos/2774556/pexels-photo-2774556.jpeg?auto=compress&cs=tinysrgb&w=600'
+        default: 'https://images.pexels.com/photos/2774556/pexels-photo-2774556.jpeg?auto=compress&cs=tinysrgb&w=600'
     },
-    location:{
+    location: {
         type: String
     }
 });
