@@ -17,6 +17,7 @@ import AlumniEvents from './pages/dashboard/admin/AlumniEvents.jsx'
 import Records from "./pages/dashboard/admin/Records.jsx";
 import Usage from './pages/dashboard/admin/Usage.jsx'
 import AdminDash from "./pages/dashboard/AdminDash.jsx";
+import Account from './pages/dashboard/Account.jsx'
 import { AuthProvider, useAuth } from '/src/utils/AuthContext.jsx';
 
 
@@ -78,6 +79,10 @@ const router = createBrowserRouter([
   {
     path:'/usage',
     element:<Usage/>
+  },
+  {
+    path:'/account',
+    element : <Account/>
   }
 ]);
 

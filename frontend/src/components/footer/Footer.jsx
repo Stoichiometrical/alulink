@@ -7,7 +7,7 @@ export default function Footer() {
     <footer className="footer">
       <div className="footer-left">
         <div className="address">
-            <h4>Address</h4>
+          <h4>Address</h4>
           <span>Powder Mill Road, Pamplemousses,</span>
           <span>ALC Campus</span>
         </div>
@@ -19,10 +19,34 @@ export default function Footer() {
       <div className="footer-right">
         <h4>Let's Connect On Our Socials</h4>
         <div className="social-icons">
-          <FaFacebook className="icon" />
-          <FaTwitter className="icon" />
-          <FaLinkedin className="icon" />
-          <FaInstagram className="icon" />
+          <a
+            href="https://www.facebook.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <FaFacebook className="icon" />
+          </a>
+          <a
+            href="https://www.twitter.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <FaTwitter className="icon" />
+          </a>
+          <a
+            href="https://www.linkedin.com/in/david-gondo/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <FaLinkedin className="icon" />
+          </a>
+          <a
+            href="https://www.instagram.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <FaInstagram className="icon" />
+          </a>
         </div>
       </div>
     </footer>

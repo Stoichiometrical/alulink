@@ -361,3 +361,53 @@ export const getOrganizedEvents = async (req, res, next) => {
     next(error);
   }
 };
+
+// eventController.js
+
+
+
+export const getTotalEventCount = async (req, res) => {
+  try {
+    const count = await Event.countDocuments();
+    res.json({ totalEvents: count });
+  } catch (error) {
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+};
+
+export const getEventStatistics = async (req, res) => {
+  try {
+    const totalEvents = await Event.countDocuments();
+
+    // Get total number of participants for each event
+    const eventsWithParticipants = await Event.aggregate([
+      {
+        $lookup: {
+          from: 'alumni', 
+          localField: 'participants',
+          foreignField: '_id',
+          as: 'participantsData',
+        },
+      },
+      {
+        $project: {
+          _id: 1,
+          title: 1,
+          description: 1,
+          date: 1,
+          location: 1,
+          imageUrl: 1,
+          participants: { $size: '$participantsData' },
+        },
+      },
+    ]);
+
+    res.json({
+      totalEvents,
+      eventsWithParticipants,
+      // Add more statistics as needed
+    });
+  } catch (error) {
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+};

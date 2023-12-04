@@ -2,3 +2,22 @@
     display:flex;
     flex-flow: row wrap;
 }
+
+
+.event-by-me{
+    display:flex;
+    flex-direction:column;
+}
+
+.byme{
+    display:flex;
+    flex-direction:column;
+    margin-bottom:3%;
+
+}
+
+.form-btns{
+    display:flex;
+ justify-content: space-between;
+ margin-top:2%;
+}

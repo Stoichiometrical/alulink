@@ -28,6 +28,28 @@ export const addManyAlumni = async (req, res, next) => {
   }
 };
 
+//Get alumni by Id
+export const getAlumniById = async (req, res) => {
+  try {
+      const alumniId = req.params.alumniId;
+
+      if (!mongoose.Types.ObjectId.isValid(alumniId)) {
+          return res.status(400).json({ message: 'Invalid alumni ID' });
+      }
+
+      const alumni = await Alumni.findById(alumniId);
+
+      if (!alumni) {
+          return res.status(404).json({ message: 'Alumni not found' });
+      }
+
+      res.json(alumni);
+  } catch (error) {
+      console.error('Error getting alumni by ID:', error.message);
+      res.status(500).json({ message: 'Internal Server Error' });
+  }
+};
+
 // Get a list of all alumni profiles
 export const getAllAlumni = async (req, res) => {
     try {
@@ -107,3 +129,41 @@ export const getAlumniByDegreeProgram = async (req, res, next) => {
       next(error);
     }
   };  
+
+
+
+
+export const getTotalAlumniCount = async (req, res) => {
+  try {
+    const count = await Alumni.countDocuments();
+    res.json({ totalAlumni: count });
+  } catch (error) {
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+};
+
+export const getAlumniEventStatistics = async (req, res) => {
+  const alumniId = req.params.alumniId;
+
+  try {
+    // Get the number of events organized by the alumni
+    const eventsOrganizedCount = await Event.countDocuments({ organizer: alumniId });
+
+    // Get the number of events registered by the alumni
+    const alumni = await Alumni.findById(alumniId);
+
+    if (!alumni) {
+      return res.status(404).json({ error: 'Alumni not found' });
+    }
+
+    const eventsRegisteredCount = alumni.eventsOrganized.length;
+
+    res.json({
+      eventsOrganizedCount,
+      eventsRegisteredCount,
+    });
+  } catch (error) {
+    console.error('Error fetching alumni event statistics:', error);
+    res.status(500).json({ error: 'Internal Server Error. Please try again later.' });
+  }
+};

@@ -11,6 +11,9 @@ router.post('/addMany', alumniController.addManyAlumni);
 // Get a list of all alumni profiles
 router.get('/list', alumniController.getAllAlumni);
 
+//Get alumni by id
+router.get('/:id',alumniController.getAlumniById)
+
 // Update an alumni profile by ID
 router.put('/:id', alumniController.updateAlumni);
 
@@ -29,5 +32,10 @@ router.get('/alumni/graduationYear/:graduationYear', alumniController.getAlumniB
 
 // Get alumni by degree program
 router.get('/alumni/degreeProgram/:degreeProgram', alumniController.getAlumniByDegreeProgram);
+
+//Get total number of alumni
+router.get('/alumnicount',alumniController.getTotalAlumniCount)
+
+router.get('/alumnistats/:id',alumniController.getAlumniEventStatistics)
 
 export default router;

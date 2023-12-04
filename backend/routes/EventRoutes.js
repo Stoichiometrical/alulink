@@ -51,4 +51,11 @@ router.get("/events/registered/:alumniId", eventController.getRegisteredEvents);
 //Route to get events organized
 router.get("/events/organized/:alumniId", eventController.getOrganizedEvents);
 
+
+
+router.get('/count',eventController.getTotalEventCount)
+
+router.get('/eventstatistics',eventController.getEventStatistics)
+
+
 export default router;

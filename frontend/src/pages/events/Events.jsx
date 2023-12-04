@@ -57,10 +57,14 @@ export default function Events() {
               />
             </div>
           ) : (
-            <div className="no-results">
-              No events found for the given search.
-            </div>
-          )}
+            // Display the message only if searchResults is empty
+            searchResults !== null && (
+              <div className="no-results">
+                No events found for the given search.
+              </div>
+            )
+          )
+          }
         </div>
 
         <div className="events">

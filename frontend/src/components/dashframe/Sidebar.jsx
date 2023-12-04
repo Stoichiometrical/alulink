@@ -6,13 +6,14 @@ export default function Sidebar({ title,isAdmin }) {
   const user = [
     { text: 'Attending', link: '/attending' },
     { text: 'Organised By Me', link: '/byme' },
-    { text: 'Collaborating', link: '/collaborating' },
+    { text: 'My Account'   , link : '/account' }
   ];
 
  const admin =[
     {text: 'Alumni Records', link: '/records'},
     { text: 'Upcoming Events', link:'/alumnievents' },
-    { text: 'Usage Statitsics', link: '/usage'}
+    { text: 'Usage Statistics', link: '/usage'},
+    { text: 'My Account'   , link : '/account' }
 
  ] 
 
