@@ -6,6 +6,7 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import {API_URL} from "../../utils/services.js";
 
 export default function MyEventCard({ title, desc, time, eventId, onDelete, onUpdate,events }) {
     const [isModifying, setIsModifying] = useState(false);
@@ -15,7 +16,7 @@ export default function MyEventCard({ title, desc, time, eventId, onDelete, onUp
 
     const handleDelete = () => {
         // Make a DELETE request to your server to delete the event
-        fetch(`http://localhost:3000/event/${eventId}`, {
+        fetch(`${API_URL}/event/${eventId}`, {
             method: 'DELETE',
         })
             .then((response) => {
@@ -58,7 +59,7 @@ export default function MyEventCard({ title, desc, time, eventId, onDelete, onUp
         };
 
         // Make a PUT request to update the event
-        fetch(`http://localhost:3000/event/${eventId}`, {
+        fetch(`${API_URL}/event/${eventId}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json",

@@ -5,6 +5,7 @@ import './home.scss';
 import { Link } from 'react-router-dom';
 import Footer from '../../components/footer/Footer';
 import { useAuth } from '../../utils/AuthContext';
+import { API_URL } from "../../utils/services.js";
 
 export default function Home() {
   const [latestEvents, setLatestEvents] = useState([]);
@@ -17,7 +18,7 @@ export default function Home() {
 
   useEffect(() => {
     // Fetch the latest events when the component mounts
-    fetch('http://localhost:3000/event/latest')
+    fetch(`${API_URL}/event/latest`)
       .then(response => response.json())
       .then(data => {
         setLatestEvents(data);

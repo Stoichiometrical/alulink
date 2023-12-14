@@ -65,13 +65,14 @@
 import React, { useState } from 'react';
 import { FaSearch } from 'react-icons/fa';
 import './SearchBar.scss';
+import {API_URL} from "../../utils/services.js";
 
 export default function SearchBar({ placeholder, serverRoute, onSearch }) {
   const [searchQuery, setSearchQuery] = useState('');
 
   const handleSearch = () => {
     // Construct the URL based on the server route and search query
-    const url = `http://localhost:3000/${serverRoute}/${encodeURIComponent(searchQuery)}`;
+    const url = `${API_URL}/${serverRoute}/${encodeURIComponent(searchQuery)}`;
 
    // Fetch results from the server using the constructed URL
    fetch(url)

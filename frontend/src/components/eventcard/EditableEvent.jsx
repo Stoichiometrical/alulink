@@ -1,5 +1,6 @@
 import "./card.scss";
 import { useState,useEffect } from "react";
+import {API_URL} from "../../utils/services.js";
 
 
 
@@ -22,36 +23,10 @@ export default function EditableEventCard({
     const handleEdit = () => {
       setIsEditing(true);
     };
-  
-    // const handleSave = async () => {
-    //   try {
-    //     const response = await fetch(`http://localhost:3000/event/${eventId}`, {
-    //       method: 'PUT',
-    //       headers: {
-    //         'Content-Type': 'application/json',
-    //       },
-    //       body: JSON.stringify(editedFields),
-    //     });
-  
-    //     if (response.ok) {
-    //         console.log(editedFields)
-    //       setIsEditing(false);
-    //       if (onUpdate) {
 
-    //         onUpdate(eventId, editedFields); // Pass updated data to the parent component
-    //       }
-    //       alert('Event successfully updated ');
-    //     } else {
-    //       console.error('Failed to update event:', await response.json());
-    //     }
-    //   } catch (error) {
-    //     console.error('Error updating event:', error);
-    //   }
-    // };
-  
     const handleSave = async () => {
         try {
-          const response = await fetch(`http://localhost:3000/event/${eventId}`, {
+          const response = await fetch(`${API_URL}/event/${eventId}`, {
             method: 'PUT',
             headers: {
               'Content-Type': 'application/json',
@@ -92,7 +67,7 @@ export default function EditableEventCard({
   
     const handleDelete = async () => {
       try {
-        const response = await fetch(`http://localhost:3000/event/${eventId}`, {
+        const response = await fetch(`${API_URL}/event/${eventId}`, {
           method: 'DELETE',
         });
   

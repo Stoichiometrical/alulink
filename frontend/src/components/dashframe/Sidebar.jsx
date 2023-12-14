@@ -4,16 +4,16 @@ import './dash.scss';
 
 export default function Sidebar({ title,isAdmin }) {
   const user = [
-    { text: 'Attending', link: '/attending' },
-    { text: 'Organised By Me', link: '/byme' },
-    { text: 'My Account'   , link : '/account' }
+    { text: 'Attending', link: '/dash/attending' },
+    { text: 'Organised By Me', link: '/dash/byme' },
+    { text: 'My Account'   , link : '/dash/account' }
   ];
 
  const admin =[
-    {text: 'Alumni Records', link: '/records'},
-    { text: 'Upcoming Events', link:'/alumnievents' },
-    { text: 'Usage Statistics', link: '/usage'},
-    { text: 'My Account'   , link : '/account' }
+    {text: 'Alumni Records', link: '/dash/records'},
+    { text: 'Upcoming Events', link:'/dash/alumnievents' },
+    { text: 'Usage Statistics', link: '/dash/usage'},
+    { text: 'My Account'   , link : '/dash/account' }
 
  ] 
 

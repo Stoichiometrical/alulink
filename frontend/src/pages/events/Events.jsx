@@ -5,6 +5,7 @@ import EventCollections from "../../components/eventcollections/EventCollections
 import AvailableEventCard from "../../components/eventcard/AvailableEventCard";
 import Footer from "../../components/footer/Footer";
 import { Link as ScrollLink } from "react-scroll";
+import {API_URL } from "../../utils/services.js";
 
 export default function Events() {
   const [searchResults, setSearchResults] = useState(null);

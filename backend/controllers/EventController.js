@@ -96,11 +96,32 @@ export const getEventsByUserId = async (req, res, next) => {
   try {
     const { userId } = req.params;
     const events = await Event.find({ organizer: userId });
-    res.status(200).json(events);
+
+    // Map events and format the date in the desired format
+    const formattedEvents = events.map((event) => ({
+      ...event._doc,
+      date: formatDate(event.date),
+    }));
+
+    res.status(200).json(formattedEvents);
   } catch (error) {
     next(error);
   }
 };
+
+// Helper function to format the date
+const formatDate = (dateString) => {
+  const options = {
+    weekday: 'long',
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  };
+
+  const date = new Date(dateString);
+  return date.toLocaleDateString('en-US', options);
+};
+
 
 //Get first 4 events
 export const getFirstFourEvents = async (req, res, next) => {
@@ -226,7 +247,7 @@ export const getLatestEventsByCategory = async (req, res, next) => {
 //   }
 // };
 
-
+//Get event by title
 export const getEventByTitle = async (req, res, next) => {
   try {
     const { title } = req.params;
@@ -309,6 +330,8 @@ export const leaveEvent = async (req, res, next) => {
   }
 };
 
+
+//Get registered events
 export const getRegisteredEvents = async (req, res, next) => {
   try {
     const { alumniId } = req.params;
@@ -336,6 +359,8 @@ export const getRegisteredEvents = async (req, res, next) => {
   }
 };
 
+
+//Get organised events
 export const getOrganizedEvents = async (req, res, next) => {
   try {
     const { alumniId } = req.params;
@@ -366,6 +391,7 @@ export const getOrganizedEvents = async (req, res, next) => {
 
 
 
+//Get total number of events
 export const getTotalEventCount = async (req, res) => {
   try {
     const count = await Event.countDocuments();
@@ -375,6 +401,7 @@ export const getTotalEventCount = async (req, res) => {
   }
 };
 
+//Get event statistics
 export const getEventStatistics = async (req, res) => {
   try {
     const totalEvents = await Event.countDocuments();
@@ -408,6 +435,38 @@ export const getEventStatistics = async (req, res) => {
       // Add more statistics as needed
     });
   } catch (error) {
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+};
+
+//  Get events by alumni full name
+export const getEventsByAlumniFullName = async (req, res) => {
+  try {
+    // Get alumni full name from request parameters
+    const alumniFullName = req.params.alumniFullName;
+
+    // Find the alumni based on the full name
+    const alumni = await Alumni.findOne({ fullName: alumniFullName });
+
+    if (!alumni) {
+      return res.status(404).json({ error: 'Alumni not found' });
+    }
+
+    // Find events organized by the alumni
+    const eventsOrganized = await Event.find({ organizer: alumni._id });
+
+    // Find events in which the alumni is a participant
+    const eventsParticipated = await Event.find({ participants: alumni._id });
+
+    // Combine and return the events
+    const allEvents = {
+      eventsOrganized,
+      eventsParticipated,
+    };
+
+    res.json(allEvents);
+  } catch (error) {
+    console.error(error);
     res.status(500).json({ error: 'Internal Server Error' });
   }
 };

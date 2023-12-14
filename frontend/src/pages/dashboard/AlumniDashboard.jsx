@@ -9,6 +9,7 @@ import MultiActionAreaCard from "../../components/eventcard/ImgCancel.jsx";
 import Button from "@mui/material/Button";
 import EventForm from "../../components/eventcard/EventForm.jsx"; // Import the EventForm component
 import DashHero from "../../components/hero/DashHero";
+import {API_URL } from "../../utils/services.js";
 
 
 export default function AlumniDashboard() {
@@ -17,7 +18,7 @@ export default function AlumniDashboard() {
 
     useEffect(() => {
         // Fetch events from the server
-        fetch("http://localhost:3000/event/events")
+        fetch(`${API_URL}/event/events`)
             .then((response) => response.json())
             .then((data) => setEvents(data))
             .catch((error) => console.error("Error fetching events:", error));

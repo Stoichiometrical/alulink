@@ -12,7 +12,7 @@ export const createAlumni = async (req, res) => {
 };
 
 
-// Controller to add many alumni
+// Add many alumni(for testing purposes)
 export const addManyAlumni = async (req, res, next) => {
   try {
     // Extract alumni data from the request body
@@ -133,6 +133,7 @@ export const getAlumniByDegreeProgram = async (req, res, next) => {
 
 
 
+//Get total number of alumni
 export const getTotalAlumniCount = async (req, res) => {
   try {
     const count = await Alumni.countDocuments();

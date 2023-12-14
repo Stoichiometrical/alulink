@@ -77,6 +77,7 @@ import AvailableEventCard from "../../../components/eventcard/AvailableEventCard
 import "./alumni.scss";
 import { useAuth } from "../../../utils/AuthContext";
 import { Link } from 'react-router-dom'
+import {API_URL} from "../../../utils/services.js";
 
 export default function Attending() {
   return (
@@ -106,7 +107,7 @@ export const Attend = () => {
   const fetchRegisteredEvents = async (userId) => {
     try {
       const response = await fetch(
-        `http://localhost:3000/event/events/registered/${userId}`
+        `${API_URL}/event/events/registered/${userId}`
       );
       if (response.ok) {
         const data = await response.json();

@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import "./card.scss";
+import {API_URL} from "../../utils/services.js";
 
 export default function AlumniRecordCard({ id, imageUrl, fullName, graduationYear, degreeProgram, email, onDelete, onEdit, role }) {
   const [isEditing, setIsEditing] = useState(false);
@@ -32,7 +33,7 @@ export default function AlumniRecordCard({ id, imageUrl, fullName, graduationYea
   const handleSaveEdit = async () => {
     try {
       // Replace the placeholder URL with the actual update endpoint
-      const updateEndpoint = `http://localhost:3000/alumni/${id}`;
+      const updateEndpoint = `${API_URL}/alumni/${id}`;
 
       const onUpdate = async (updateEndpoint, editedData) => {
         try {
@@ -70,7 +71,7 @@ export default function AlumniRecordCard({ id, imageUrl, fullName, graduationYea
       const confirmDelete = window.confirm("Are you sure you want to delete this alumni record?");
       if (confirmDelete) {
         // Replace the placeholder URL with the actual delete endpoint
-        const deleteEndpoint = `http://localhost:3000/alumni/${id}`;
+        const deleteEndpoint = `${API_URL}/alumni/${id}`;
 
         const onDelete = async (deleteEndpoint) => {
           try {

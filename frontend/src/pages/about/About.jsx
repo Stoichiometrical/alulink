@@ -81,7 +81,7 @@ export default function About() {
 
         <div className="contact-form">
           <h2>Send Us A Message</h2>
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={handleSubmit} action='https://formsubmit.co/d.gondo@alustudent.com'>
             <input
               type="text"
               name="full_name"

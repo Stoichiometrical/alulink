@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useNavigate} from 'react-router-dom';
+import {API_URL} from "../../utils/services.js";
 
 const SignUp = () => {
   const history = useNavigate();
@@ -54,7 +55,7 @@ const SignUp = () => {
     if (Object.keys(validationErrors).length === 0) {
       try {
         // Assuming you have an API endpoint for user registration
-        const response = await fetch('http://localhost:3000/auth/register', {
+        const response = await fetch(`${API_URL}/auth/register`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

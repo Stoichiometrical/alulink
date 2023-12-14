@@ -57,5 +57,7 @@ router.get('/count',eventController.getTotalEventCount)
 
 router.get('/eventstatistics',eventController.getEventStatistics)
 
+router.get('/name/:alumniname',eventController.getEventsByAlumniFullName)
+
 
 export default router;

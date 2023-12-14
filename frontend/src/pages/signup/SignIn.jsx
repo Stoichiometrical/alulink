@@ -53,7 +53,9 @@ const SignIn = () => {
           navigate('/');
         } else {
           // Handle sign-in error
+          alert('Login Failed.Please enter correct details')
           const errorData = await response.json();
+
           setErrors({ signIn: errorData.message });
         }
       } catch (error) {

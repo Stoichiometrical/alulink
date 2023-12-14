@@ -3,6 +3,7 @@ import DashHero from "../../components/hero/DashHero";
 import DashFrame from "../../components/dashframe/DashboardFrame";
 import React, { useState, useEffect } from "react";
 import { useAuth } from "../../utils/AuthContext";
+import { API_URL} from "../../utils/services.js";
 
 export default function Account() {
     const { userData } = useAuth();
@@ -48,7 +49,7 @@ export function MyAccount() {
 
   const handleSubmit = async () => {
     try {
-      const updateAccountEndpoint = `http://localhost:3000/alumni/${alumniId}`;
+      const updateAccountEndpoint = `${API_URL}/alumni/${alumniId}`;
 
       // Identify changed fields
       const changedFields = {};
@@ -93,7 +94,7 @@ export function MyAccount() {
   useEffect(() => {
     const fetchAccountDetails = async () => {
       try {
-        const getAccountDetailsEndpoint = `http://localhost:3000/alumni/${alumniId}`;
+        const getAccountDetailsEndpoint = `${API_URL}/alumni/${alumniId}`;
         const response = await fetch(getAccountDetailsEndpoint);
 
         if (!response.ok) {

@@ -44,24 +44,20 @@ const router = createBrowserRouter([
     element: <About/>,
   },
   {
-    path: "/userdashs",
-    element: <App />,
-  },
-  {
      path:'/userdash',
      element:<Attending/>,
     
   },
   {
-    path:'byme',
+    path:'/dash/byme',
     element:<ByMe/>,
   },
   {
-    path:'attending',
+    path:'/dash/attending',
     element:<Attending/>,
   },
   {
-    path:'collaborating',
+    path:'/dash/collaborating',
     element:<Collaborating/>,
   },
   {
@@ -69,19 +65,19 @@ const router = createBrowserRouter([
     element: <AlumniEvents/>,
   },
   {
-    path:'/alumnievents',
+    path:'/dash/alumnievents',
     element:<AlumniEvents/>
   },
   {
-    path:'/records',
+    path:'/dash/records',
     element:<Records/>
   },
   {
-    path:'/usage',
+    path:'/dash/usage',
     element:<Usage/>
   },
   {
-    path:'/account',
+    path:'/dash/account',
     element : <Account/>
   }
 ]);

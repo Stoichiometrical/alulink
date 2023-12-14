@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import './card.scss'
+import { API_URL} from "../../utils/services.js";
 
 export default function EventForm({ onClose, onEventCreate }) {
     const [eventData, setEventData] = useState({
@@ -19,7 +20,7 @@ export default function EventForm({ onClose, onEventCreate }) {
 
     const handleCreateEvent = () => {
         // Send the eventData to the server to create the event
-        fetch("http://localhost:3000/event/add", {
+        fetch("${API_URL}/event/add", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

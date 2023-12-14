@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './eventcoll.scss';
 import AvailableEventCard from '../eventcard/AvailableEventCard';
+import {API_URL} from "../../utils/services.js";
 
 export default function EventCollections({ title, category, id }) {
   const [events, setEvents] = useState([]);
@@ -10,8 +11,8 @@ export default function EventCollections({ title, category, id }) {
   useEffect(() => {
     // Fetch either the latest events or all events based on the showAllEvents state
     const endpoint = showAllEvents
-      ? `http://localhost:3000/event/events/category/${category}`
-      : `http://localhost:3000/event/events/latest/${category}`;
+      ? `${API_URL}/event/events/category/${category}`
+      : `${API_URL}/event/events/latest/${category}`;
 
     fetch(endpoint)
       .then((response) => response.json())

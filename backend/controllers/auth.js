@@ -4,25 +4,46 @@ import { createError } from "../utils/error.js";
 import jwt from "jsonwebtoken";
 
 // Register user
+// export const register = async (req, res, next) => {
+//     try {
+//         const salt = bcrypt.genSaltSync(10);
+//         const hash = bcrypt.hashSync(req.body.password, salt);
+//
+//         const newUser = new User({
+//             fullName:req.body.fullName,
+//             email: req.body.email,
+//             password: hash,
+//             graduationYear: req.body.graduationYear,
+//             degreeProgram: req.body.degreeProgram,
+//             role: req.body.role
+//
+//         });
+//
+//         await newUser.save();
+//         res.status(201).json({ message: "Successfully registered user", user: newUser });
+//     } catch (e) {
+//         next(e);
+//     }
+// };
+
 export const register = async (req, res, next) => {
     try {
         const salt = bcrypt.genSaltSync(10);
         const hash = bcrypt.hashSync(req.body.password, salt);
 
         const newUser = new User({
-            fullName:req.body.fullName,
+            fullName: req.body.fullName,
             email: req.body.email,
             password: hash,
             graduationYear: req.body.graduationYear,
             degreeProgram: req.body.degreeProgram,
-            role: req.body.role
-    
+            role: req.body.role,
         });
 
         await newUser.save();
         res.status(201).json({ message: "Successfully registered user", user: newUser });
-    } catch (e) {
-        next(e);
+    } catch (error) {
+        next(error);
     }
 };
 

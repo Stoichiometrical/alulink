@@ -1,6 +1,7 @@
 import React, { useContext, useState, useEffect } from "react";
 import "./card.scss";
 import { useAuth } from "../../utils/AuthContext";
+import {API_URL} from "../../utils/services.js";
 
 export default function AvailableEventCard({
   img,
@@ -35,7 +36,7 @@ export default function AvailableEventCard({
     if (confirmAction) {
       try {
         const response = await fetch(
-          `http://localhost:3000/event/${isRSVP ? "leave" : "join"}/${eventId}`,
+          `${API_URL}/event/${isRSVP ? "leave" : "join"}/${eventId}`,
           {
             method: "POST",
             headers: {

@@ -7,6 +7,7 @@ import DashHero from "../../../components/hero/DashHero";
 import DashFrame from "../../../components/dashframe/DashboardFrame";
 import EditableEventCard from "../../../components/eventcard/EditableEvent";
 import { useAuth } from "../../../utils/AuthContext";
+import {API_URL} from "../../../utils/services.js";
 
 export default function ByMe() {
   const [events, setEvents] = useState([]);
@@ -26,7 +27,7 @@ export default function ByMe() {
     const fetchEvents = async () => {
       try {
         const response = await fetch(
-          `http://localhost:3000/event/events/organized/${userId}`
+          `${API_URL}/event/events/organized/${userId}`
         );
         if (response.ok) {
           const data = await response.json();
@@ -85,7 +86,7 @@ const ByMes = ({ events, handleUpdate }) => {
 
   const handleCreateEvent = async () => {
     try {
-      const response = await fetch("http://localhost:3000/event/add", {
+      const response = await fetch(`${API_URL}/event/add`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -95,6 +96,8 @@ const ByMes = ({ events, handleUpdate }) => {
 
       if (!response.ok) {
         throw new Error("Failed to create event");
+      }else{
+        alert('Event Succesfully Created')
       }
 
       setShowAddEventForm(false);

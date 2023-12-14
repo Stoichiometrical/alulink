@@ -9,10 +9,7 @@ import {getUser} from "../controllers/auth.js";
 const usersRouter = express.Router();
 
 
-// usersRouter.get("/checkauthentication",verifyToken,(req,res,next)=>{
-//     res.send("Hello User, you are authenticated")
-// })
-//
+
 usersRouter.get("/checkuser/:id",verifyUser,(req,res,next)=>{
     res.send("You can delete the user")
 })
